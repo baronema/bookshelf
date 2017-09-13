@@ -1,0 +1,129 @@
+<% include ../partials/header %>
+
+    <!-- Main Content Pane -->
+	<!-- Library Search Pane -->
+<div class="col-sm-9">
+	<div class="jumbotron">
+		<div class="container-fluid">
+			<form class="form-horizontal" id="searchForm" action="/library/search" method="POST">
+			  <h4><strong>Search Books</strong></h4>
+			  <div class="form-group">
+			    <label for="searchTitle" class="col-sm-2 control-label">Title</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" name="searchTitle">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="searchSubject" class="col-sm-2 control-label">Subject</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" name="searchSubject">
+			  	</div>
+			  </div>
+			  <button type="submit" class="btn btn-info">Search     &nbsp<span class="glyphicon glyphicon-search"></span></button>
+			</form>
+		</div>
+	</div>
+	
+	<!-- Container for library display -->
+	<div class="inner-wrapper">
+		<!-- Book list filter by first letter of title option -->
+		<div id="letter-range-holder">
+			<div id="letter_range">
+				<% letters.forEach(function(letter){ 
+					if(letter === '#'){ return;} %>		<!-- skip '#' at array index 0 to display at end of list -->
+					<a href="#" id ="letter_<%=letter%>" class="letter"><%= letter %></a>
+			<%	}) %>
+				<a href="#" id="number" class="letter">#</a>
+				<a href="#" id="all" class="letter"><em>ALL</em></a>
+			</div>
+		</div>
+		
+		<!-- Library content book containers to display each book in query
+		
+		<div id="library_content"> 
+		 <% var i = 0; %>		<!-- index for traversing letters array -->
+		 <div class="empty"> 	<!-- set spacing for library list -->
+		 
+		 <% books.forEach(function(book){ %>
+			<!-- skip list header if no books exist for given letter -->
+			<%  while(letters[i] < book.title.charAt(0) && !(/^[0-9]/.test(book.title.charAt(0)))){
+					i++;
+				} %>
+						
+			 <% if(letters[i] === book.title.charAt(0) || /^[0-9]/.test(book.title.charAt(0))){ %>
+			 		</div>  			<!-- closes empty spacing <div>, and each previous clear container <div> -->
+					<div class="clear" id="id_<%= letters[i] %>">	<!-- wraps each alphabetical list of books by first letter of title - allows for filtering displayed results by header -->
+					<div class="first_letter"><%= letters[i] %></div> 	<!-- alphabetical list headers -->
+				 <% i++; %>
+			<%  } %>
+				<!-- contents of a given book -->	
+				<div class="list" id="id_<%= book._id %>">
+					<div class="clearfix">
+						<div class="column image extended">
+							<img class="extended" id="cover" src="<%= book.coverArtURL %>" >
+						</div>
+					
+						<div class="info_container">
+							<p id="title"> <%= book.title %> </p>
+							<p id="publisher"><%= book.publisher %></p>
+							<p id="author"> <%= book.author %> </p>
+							<p id="isbn">
+								<span id="isbn13"><strong>ISBN 13: &nbsp</strong><%= book.isbn13 %>  &nbsp&nbsp</span>
+								<span id="isbn10"><strong>ISBN 10: &nbsp</strong><%= book.isbn10 %></span>
+							</p>
+							<p class="extended" id="unit"><strong>Unit: &nbsp</strong><%= book.unit %></p>
+							<p class="extended" id="subject"><strong>Subject: &nbsp</strong><%= book.subject %></p>
+							<p class="extended" id="status">
+								<span id="home"><strong>Classroom: &nbsp;</strong><%= book.location.name %></span>
+								<span id="borrowed"><strong>Borrowed By: &nbsp</strong><%= book.checkedLoc.name %></span>
+							</p>
+							<% if(book.checkedLoc.borrowed){ %>
+							<a href="/book/<%= book._id %>/checkin" type="button" class="btn btn-info extended" id="returnBtn">Return   &nbsp
+								<span class="glyphicon glyphicon-tags"></span>
+							</a>
+							<% } else { %>
+							<a href="/book/<%= book._id %>/checkout" type="button" class="btn btn-info extended" id="borrowBtn">Borrow   &nbsp
+								<span class="glyphicon glyphicon-tags"></span>
+							</a>
+							<% } %>
+							<a href="/book/<%= book._id %>/edit" type="button" class="btn btn-info extended" id="editBtn">Edit      &nbsp
+								<span class="glyphicon glyphicon-erase"></span>
+							</a>
+							<a href="/book/<%= book._id %>/delete" type="button" class="btn btn-info extended" id="deleteBtn">Delete     &nbsp
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</div>
+					</div>
+				</div>		   
+		<%	})%>
+			</div>		<!-- closes <div .empty> if no books, or final <div .clear> container otherwise -->
+			
+			<!-- Display if no books in list -->
+			<% if(books.length === 0){ %>
+				<div id="emptylist"><h3>No books to display</h3></div>
+			<%	} %>
+		</div>
+	</div>
+</div>
+</div>
+
+<!--LOAD SCRIPTS-->
+
+<!-- JQUERY CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<!-- DYNAMICALLY SET LEFT NAVIGATION PANE CLASSROOMS, 'ACTIVE', BASED ON LIBRARY CURRENTLY SHOWN -->
+<script>
+var z = <%= library %>;
+
+$('#' + z.id + ' a').addClass('current');
+
+</script>
+
+<!-- JAVASCRIPT FILE -->
+<script src="/scripts/library.js"></script>
+	
+<% include ../partials/footer %>

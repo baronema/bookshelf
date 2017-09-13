@@ -1,0 +1,67 @@
+<% include ../partials/header %>
+
+<!-- Main Content Pane -->
+
+<!--Edit Book Pane -->
+<div class="col-sm-9">
+<div class="jumbotron">
+	<div class="container-fluid">
+		<form class="form-horizontal" id="myForm" name="editbook" action="/book/<%=book._id%>?_method=PUT" method="POST" onSubmit="return editBook()">
+		  <h4><strong>Edit Book Form</strong></h4>
+		  <div class="form-group">
+		    <label for="title" class="col-sm-2 control-label">Title:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="title" value="<%=book.title%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="publisher" class="col-sm-2 control-label">Publisher:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="publisher" value="<%=book.publisher%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="author" class="col-sm-2 control-label">Author:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="author" value="<%=book.author%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="isbn" class="col-sm-2 control-label">ISBN 13:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="isbn13" value="<%=book.isbn13%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="isbn:10" class="col-sm-2 control-label">ISBN 10:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="isbn10" value="<%=book.isbn10%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="unit" class="col-sm-2 control-label">Unit:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="unit" value="<%=book.unit%>">
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="subject" class="col-sm-2 control-label">Subject:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="subject" value="<%=book.subject%>">
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="coverart" class="col-sm-2 control-label">Cover Art URL:</label>
+		    <div class="col-sm-10">
+		        <input type="text" class="form-control" name="coverart" readonly="readonly" value="<%=book.coverArtURL%>">
+		    </div>
+		  </div>
+		  <button type="submit" class="btn btn-info">Update Book     &nbsp<span class="glyphicon glyphicon-erase" aria-hidden="true"></span></button>
+		</form>
+	</div>
+</div>
+</div>
+	
+<script src="/scripts/updatebooks.js"></script>
+	
+<% include ../partials/footer %>

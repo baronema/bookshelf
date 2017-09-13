@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>BookShelf</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	</head>
+
+	<body>
+		<!-- Navbar Setup -->
+		<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+	        <div class="container-fluid">
+	            <div class="nav navbar-header">
+	                <a class="navbar-brand" id="navbar-text" href="/">BookShelf <span class="glyphicon glyphicon-book"></span></a>
+	            </div>
+	        </div>
+    	</nav>
+    	
+    	<div class="container">
+	       <% if(error && error.length > 0) { %>
+	         <div class="alert alert-danger"><p><%= error %></p></div>
+	       <% } %>
+	       
+	       <% if(success && success.length > 0) { %>
+	         <div class="alert alert-success"><p><%= success %></p></div>
+	       <% } %>
+	    </div>
+	    

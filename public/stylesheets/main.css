@@ -1,0 +1,206 @@
+/* Setup for navbar and basic page layout */
+html {
+	padding: 75px 20px 0 15px;
+}
+
+.navbar-custom {
+	background-color: #5bc0de;
+}
+
+#navbar-text {
+	color: white;
+}
+
+#navbar-text li a{
+	color: white;
+}
+
+/* make sidebar nav vertical - style for sidebar*/ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+    border-radius: 8px;
+    font-family: 'Droid Serif', serif;
+    font-weight: 700;
+    background-color: #f9f9f9;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-family: 'Droid Serif', serif;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
+div #left-menu {
+  font-family: 'Droid Serif', serif;
+  font-weight: 700;
+  background-color: #f9f9f9;
+}
+
+/* Style for search menu */
+
+.jumbotron {
+	border-radius: 6px;
+	margin-right: auto;
+	font-family: 'Droid Serif', serif;
+	font-weight: 500;
+	padding: 5px 5px;
+	background-color: #f9f9f9;
+	border: 1px solid #e7e7e7;
+	
+}
+
+/* Style for library list */
+
+.inner-wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: 1px solid #e7e7e7;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.inner-wrapper #letter-range-holder {
+  text-align: center;
+}
+
+a.letter {
+  display: inline-block;
+  cursor: pointer;
+  width: 25px;
+  text-align: center;
+  font-family: 'Droid Serif', serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #5bc0de;
+}
+
+.library_content {
+  text-align: left;
+}
+
+.inner-wrapper .first_letter {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-bottom: 2px orange double;
+  color: #f28977;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.image {
+  max-width: 200px;
+  margin-right: 10px;
+}
+
+.info_container {
+  width: 75%;
+}
+
+.list {
+  cursor: pointer; /* Make <div> clickable in iOS devices */
+}
+
+#cover {
+  float: left;
+}
+
+#title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#publisher {
+  font-family: 'Droid Serif', serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #f28977;
+}
+
+#author {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #f28977;
+}
+
+#unit, #subject {
+  font-family: 'Droid Serif', serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+#isbn {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+}
+
+#status {
+ font-family: 'Lato', sans-serif;
+ font-size: 12px;
+ border-top: solid 1px #dedede;
+}
+
+#home {
+  display: inline-block;
+  padding-right: 2.5em;
+}
+
+
+.btn{
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 10px;
+}
+
+.extended, .hide{
+  display: none;
+}
+
+
+.extended_style {
+    width: 100%;
+    background-color: white;
+    border: ridge 1.5px #e7e7e7;
+    border-radius: 6px;
+    margin: 4px 0;
+}
+
+#classrooms li .current{
+  background-color: #b1b1b5;
+  color: #fff;
+}
+
+#emptylist {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color: #f28977;
+}

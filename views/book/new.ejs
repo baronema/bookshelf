@@ -1,0 +1,86 @@
+<% include ../partials/header %>
+
+<link rel="stylesheet" href="stylesheets/index.css">
+
+<!--      Main Content Pane -->
+<!-- Search By ISBN Pane -->
+<div class="col-sm-9">
+<div class="jumbotron">
+	<div class="container-fluid">
+		<form class="form-horizontal" name="isbnSearch" action="/library/new" onSubmit="return submitISBN()" method="POST">
+		  <h4><strong>Search Google Books</strong></h4>
+		  <div class="form-group">
+		    <label for="isbn" class="col-sm-2 control-label">ISBN:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="search">
+		    </div>
+		  </div>
+		  <button type="submit" class="btn btn-info">Lookup Book     &nbsp<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		 </form>
+	</div>
+</div>
+</div>
+
+<!--Add Book Pane -->
+<div class="col-sm-9">
+<div class="jumbotron">
+	<div class="container-fluid">
+		<form class="form-horizontal" id="myForm" name="addbook" action="/library" onSubmit="return addBook()" method="POST">
+		  <h4><strong>Add Book</strong></h4>
+		  <div class="form-group">
+		    <label for="title" class="col-sm-2 control-label">Title:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="title" value="<%=title%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="publisher" class="col-sm-2 control-label">Publisher:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="publisher" value="<%=publisher%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="author" class="col-sm-2 control-label">Author:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="author" value="<%=author%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="isbn" class="col-sm-2 control-label">ISBN 13:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="isbn13" value="<%=isbn13%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="isbn:10" class="col-sm-2 control-label">ISBN 10:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="isbn10" value="<%=isbn10%>">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="unit" class="col-sm-2 control-label">Unit:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="unit">
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="subject" class="col-sm-2 control-label">Subject:</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" name="subject">
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="coverart" class="col-sm-2 control-label">Cover Art URL:</label>
+		    <div class="col-sm-10">
+		        <input type="text" class="form-control" name="coverart" readonly="readonly" value="<%=coverArtURL%>">
+		    </div>
+		  </div>
+		  <button type="submit" class="btn btn-info">Add Book     &nbsp<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+		</form>
+	</div>
+</div>
+</div>
+	
+<script src="/scripts/addbooks.js"></script>
+	
+<% include ../partials/footer %>

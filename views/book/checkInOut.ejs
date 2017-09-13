@@ -1,0 +1,69 @@
+<% include ../partials/header %>
+
+<!-- Main Content Pane -->
+
+<!--Edit Book Pane -->
+<div class="col-sm-9">
+<div class="jumbotron">
+	<div class="container-fluid">
+		<form class="form-horizontal" id="myForm" name="check_in_out" action="/book/<%=book._id%>/<%=book.checkedLoc.borrowed%>?_method=PUT" method="POST">
+		<%  if(book.checkedLoc.borrowed == true) { %>
+		        <h4><strong>Return Book</strong></h4>
+        <%    } else { %>
+		        <h4><strong>Borrow Book</strong></h4>
+		<%    } %>
+            <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Title:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="title" readonly="readonly" value="<%=book.title%>">
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="publisher" class="col-sm-2 control-label">Publisher:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="publisher" readonly="readonly" value="<%=book.publisher%>">
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="author" class="col-sm-2 control-label">Author:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="author" readonly="readonly" value="<%=book.author%>">
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="isbn" class="col-sm-2 control-label">ISBN 13:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="isbn13" readonly="readonly" value="<%=book.isbn13%>">
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="isbn:10" class="col-sm-2 control-label">ISBN 10:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="isbn10" readonly="readonly" value="<%=book.isbn10%>">
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="unit" class="col-sm-2 control-label">Unit:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="unit" readonly="readonly" value="<%=book.unit%>">
+              </div>
+            </div>
+            <div class="form-group">
+            <label for="subject" class="col-sm-2 control-label">Subject:</label>
+            <div class="col-sm-10">
+            	<input type="text" class="form-control" name="subject" readonly="readonly" value="<%=book.subject%>">
+              </div>
+            </div>
+		  <% if(book.checkedLoc.borrowed == true) { %>
+		      <button type="submit" class="btn btn-info">Check In     &nbsp<span class="glyphicon glyphicon-check" aria-hidden="true"></span></button>
+		  <% } else { %>
+		      <button type="submit" class="btn btn-info">Check Out     &nbsp<span class="glyphicon glyphicon-check" aria-hidden="true"></span></button>
+		  <% } %>
+		</form>
+	</div>
+</div>
+</div>
+	
+<script src="/scripts/updatebooks.js"></script>
+	
+<% include ../partials/footer %>

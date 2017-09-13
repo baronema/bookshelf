@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no" />
+		<title>BookShelf</title>
+		<link href="https://fonts.googleapis.com/css?family=Droid+Serif|Lato" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+	</head>
+
+	<body>
+		<!-- Navbar Setup -->
+		<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+	        <div class="container-fluid">
+	            <div class="nav navbar-header">
+	                <a class="navbar-brand" id="navbar-text" href="/library">BookShelf <span class="glyphicon glyphicon-book"></span></a>
+	            </div>
+	            <div class="collapse navbar-collapse">
+	                <ul class="nav navbar-nav navbar-right" id="navbar-text">
+	                	<% if(currentUser){ %>
+                        <li><a href="#">Signed In As: <%= currentUser.username %></a></li>
+                    <% } %>
+	                	<li><a href="/book/new">Add Book</a></li>
+	                	<li><a href="/logout">Logout</a></li>
+	                </ul>
+	            </div>
+	        </div>
+    	</nav>
+    	
+    	<div class="container">
+	       <% if(error && error.length > 0) { %>
+	         <div class="alert alert-danger"><p><%= error %></p></div>
+	       <% } %>
+	       
+	       <% if(success && success.length > 0) { %>
+	         <div class="alert alert-success"><p><%= success %></p></div>
+	       <% } %>
+	    </div>
+		
+		<!-- Collapsing Left Menu Pane -->
+		<div class="row">
+		  <div class="col-sm-3">
+		    <div class="sidebar-nav">
+		      <div class="navbar navbar-default" role="navigation">
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <span class="visible-xs navbar-brand">Class Library Menu</span>
+		        </div>
+		        <div class="navbar-collapse collapse sidebar-navbar-collapse" id="left-menu">
+		          <h4><strong>&nbspClassrooms:</strong></h4>
+		          <ul class="nav navbar-nav" id="classrooms">
+		            <li id="Infant"><a href="/library/Infant">Infant</a></li>
+		            <li id="YT"><a href="/library/YT">YT</a></li>
+		            <li id="EP1"><a href="/library/EP1">EP1</a></li>
+		            <li id="EP2"><a href="/library/EP2">EP2</a></li>
+		            <li id="PS1"><a href="/library/PS1">PS1</a></li>
+		            <li id="PS2"><a href="/library/PS2">PS2</a></li>
+		            <li id="Pathways"><a href="/library/Pathways">Pathways</a></li>
+		            <li id="GA PK"><a href="/library/GA PK">GA PK</a></li>
+		            <li id="PPK1"><a href="/library/PPK1">PPK1</a></li>
+		            <li id="PPK2"><a href="/library/PPK2">PPK2</a></li>
+		            <li id="Explorers"><a href="/library/Explorers">Explorers</a></li>
+		            <li id="RR"><a href="/library/RR">RR</a></li>
+		            <hr />
+		            <li><a href="/book/new">Add Books</a></li>
+		            <li id="loaned"><a href="/library/loaned">Loaned Books</a></li>
+		            <li id="borrowed"><a href="/library/borrowed">Borrowed Books</a></li>
+		          </ul>
+		        </div><!--/.nav-collapse -->
+		      </div>
+		    </div>
+		  </div>
+		  
