@@ -71,6 +71,7 @@ router.delete("/:bookId", function(req, res){
         if(err){
             console.log("Failed to Delete Book!!!", err);
         } else {
+            req.flash("success", "You have deleted a book from your library!")
             res.redirect("/library/" + req.user.username);
         }
     })
