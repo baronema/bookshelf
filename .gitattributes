@@ -1,1 +1,3 @@
 src/main/resources/static/* linguist-vendored
+* linguist-vendored
+*.js linguist-vendored=false
